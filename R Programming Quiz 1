@@ -1,0 +1,49 @@
+Q&A
+What are the names of the data frame?
+
+names(data) #or 
+colnames(data)
+
+What are the row names of the data frame?
+row.names(data) #or
+rownames(data)
+
+Extract the first 2 rows
+print(data[1:2,] # Syntax: c(..., recursive = FALSE) could also use head(data) for to extract the first 6 rows
+
+How many observations (i.e. rows) are in this data frame?
+nrow(data)
+
+Extract the last 2 rows of the data frame and print them to the console. What does the output look like?
+data[c(nrow(data)-1, nrow(data)),]
+
+#OR
+
+n <- nrow(data)
+print(data[(n - 1):n, ])
+
+What is the value of Ozone in the 47th row? # various solutions
+data[47,c("Ozone")]
+
+data[c(47),]
+
+data[c(47),"Ozone"]
+
+data[(47),"Ozone"]
+
+How many missing values are in the Ozone column of this data frame?
+missing <- is.na(data[,"Ozone"]
+sum(missing)
+[1] 37
+
+What is the mean of the "Ozone" column in this dataset? Exclude missing values (coded as NA) from this calculation
+
+## Fastest solution
+mean(dataset[, "Ozone"], na.rm = TRUE)
+## [1] 42.13
+
+## Alternatively
+y <- !is.na(dataset[, "Ozone"])  ## Find non-missing values
+mean(dataset[y, "Ozone"])
+## [1] 42.13
+
